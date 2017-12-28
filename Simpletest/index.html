@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WELCOME TO SRA</title>
+</head>
+<body>
+        <h1>Internet Of Things</h1>
+<div>
+    <a href=\"/bulb1\"><button >Bulb1</button></a>
+    <a href=\"/bulb2\"><button >Bulb2</button></a>
+    <a href=\"/bulb3\"><button >Bulb3</button></a>
+    <a href=\"/bulb3\"><button >Bulb4</button></a>
+</div>
+<div>
+    <button onclick="document.getElementById('myImage1').src='pic_bulbon.gif'">Bulb1-on</button>
+    <img id="myImage1" src="pic_bulboff.gif" style="width:30px">
+    <button onclick="document.getElementById('myImage1').src='pic_bulboff.gif'">Bulb1-off</button>
+</div>
+<div>
+    <button onclick="document.getElementById('myImage2').src='pic_bulbon.gif'">Bulb2-on</button>
+    <img id="myImage2" src="pic_bulboff.gif" style="width:30px">
+    <button onclick="document.getElementById('myImage2').src='pic_bulboff.gif'">Bulb2-off</button>
+</div>
+<div>
+    <button onclick="document.getElementById('myImage3').src='pic_bulbon.gif'">Bulb3-on</button>
+    <img id="myImage3" src="pic_bulboff.gif" style="width:30px">
+    <button onclick="document.getElementById('myImage3').src='pic_bulboff.gif'">Bulb3-off</button>
+</div>
+<div>
+    <button onclick="document.getElementById('myImage4').src='pic_bulbon.gif'">Bulb4-on</button>
+    <img id="myImage4" src="pic_bulboff.gif" style="width:30px">
+    <button onclick="document.getElementById('myImage4').src='pic_bulboff.gif'">Bulb4-off</button>
+</div>
+
+<script>
+
+    document.querySelector('#start-broadcasting').onclick = function () {
+        var courseName = document.getElementById('course-name').value;
+        var userName;
+        if(!courseName){
+            courseName =  Math.round(Math.random() * 9999999999) + 9999999999;
+        }
+        userName = courseName;
+        window.open(window.location.origin + '/course/professor?course='+courseName+'&userName='+userName, '_blank', 'toolbar=0,location=0,menubar=0');
+    };
+
+</script>
+</body>
+</html>
