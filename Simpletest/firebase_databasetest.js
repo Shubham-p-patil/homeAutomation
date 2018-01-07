@@ -1,16 +1,17 @@
 var admin = require("firebase-admin");
 
 // Fetch the service account key JSON file contents
-var serviceAccount = require("./HackerthonData-c3fbad41c806.json");
+var serviceAccount = require("./firebase.json");
 
 // Initialize the app with a service account, granting admin privileges
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://hackerthondata.firebaseio.com/"
+  databaseURL: "https://*************.firebaseio.com/"
 });
 
 // As an admin, the app has access to read and write all data, regardless of Security Rules
 var db = admin.database();
+
 //Initialize a reference variable for accesing he database
 var ref = db.ref("/");
 db.ref("/").once("value",function(snapshot){
@@ -19,47 +20,40 @@ db.ref("/").once("value",function(snapshot){
 
 //Initialize reference varialble to create a new child
 var usersRef = ref.child("users");
-// usersRef.set({
-//   alanisawesome: {
-//       date_of_birth: "June 23, 1912",
-//       full_name: "Alan Turing"
-//     },
-//     gracehop: {
-//       date_of_birth: "December 9, 1906",
-//       full_name: "Grace Hopper"
-//     }
-//
-// });
+	usersRef.set({
+   		"user":"name"
+ });
 
-// app.post('/light/1',function(req,res){
-// 	req.on('data', function(chunk) {
-// admin.auth().getUserByEmail("mandarsadye@gmail.com")
-//   .then(function(userRecord) {
-//     // See the UserRecord reference doc for the contents of userRecord.
-//     var userRecordtmp = userRecord.toJSON();
-//     console.log("Successfully fetched user data:", userRecordtmp.uid);
-//   })
-//   .catch(function(error) {
-//     console.log("Error fetching user data:", error);
-//   });
+ 
+//Access the uid and search through a number of uid for change in any particular child value or child
 
-  /*db.ref("/responseRequired").on("value", function(snapshot) {
+admin.auth().getUserByEmail("random@gmail.com")
+	.then(function(userRecord) {
+	     // See the UserRecord reference doc for the contents of userRecord.
+	     var userRecordtmp = userRecord.toJSON();
+    		 console.log("Successfully fetched user data:", userRecordtmp.uid);
+   	})
+   	.catch(function(error) {
+    		 console.log("Error fetching user data:", error);
+ 	});
+
+db.ref("/responseRequired").on("value", function(snapshot) {
   	var uid = snapshot.val().split(" ");
   	console.log(snapshot.val());
   	for(i=0;i<uid.length;i++){
   		db.ref("/"+snapshot.val()).on("value", function(snapshot) {
   			console.log(snapshot.val());
   		});
-  	//}
+  	}
   });
-  // db.ref("/").update({
-  // "responseRequired": "Shubham"
-  // });
-db.ref("/responseRequired").once("value",function(snapshot){
-  console.log(snapshot.val());
-});
+
+//Update any existing value present in the data base without changing any other value
+db.ref("/").update({
+  "responseRequired": "Shubham"
+ });
+
 // do some stuff once
-db.ref("/NI6FuroAFmaFYci4BXoPft7mcvL2").once("value", function(snapshot) {
+db.ref("/responseRequired").once("value",function(snapshot){
   console.log(snapshot.val());
 });
 
@@ -73,10 +67,4 @@ ref.on("child_added", function(snapshot, prevChildKey) {
   var newPost = snapshot.val();
 });
 
-db.ref("/").update({
-"responseRequired": "B5oRvBKX1oXrzLLnF4olhrs0YF03"
-});
-db.ref("/B5oRvBKX1oXrzLLnF4olhrs0YF03").update({
-"fan":"100"
-});
-*/
+

@@ -1,8 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://127.0.0.1:27017/mydb";
 
-
-/*
  MongoClient.connect(url, function(err, db) {
    if (err) throw err;
    var dbase = db.db("mydb");
@@ -32,7 +30,7 @@ MongoClient.connect(url, function(err, db) {
                 longitude: 1.2726165056228638,
                 monitoringData: '0 0 0 0 0 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0',
                 monitoringRadius: 123,
-                name: 'mandar',
+                name: 'username',
                 numberOfAC: 0,
                 numberOfFans: 0,
                 numberOfLights: 0,
@@ -56,7 +54,7 @@ MongoClient.connect(url, function(err, db) {
 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
-  var myobj = { name: "Shubham", address: "Kossine" };
+  var myobj = { name: "Username", address: "Company" };
   db.collection("customers").insertOne(myobj, function(err, res) {
     if (err) throw err;
     console.log("2 record inserted");
@@ -65,23 +63,24 @@ MongoClient.connect(url, function(err, db) {
   });
 });
 {uid:"KMbzqgQMfsXLhrxotK8lLhrYnLK2"}
-*/
+
 
 
 MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbase = db.db("mydb");
- dbase.collection("customers_uid").find({uid:"NI6FuroAFmaFYci4BXoPft7mcvL2"}).toArray(function(err, result) {
-    if (err) throw err;
-    console.log(result[0].paramerters.name);
-    db.close();
-  });
+  	if (err) throw err;
+  	var dbase = db.db("mydb"); ////In Latest veersion of mongodb you will have to give a reference to the database 
+				//A global reference will not do
+ 	dbase.collection("customers_uid").find({uid:"NI6FuroAFmaFYci4BXoPft7mcvL2"}).toArray(function(err, result) {
+		    if (err) throw err;
+		    console.log(result[0].paramerters.name);
+    		db.close();
+ 	 });
 });
 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var myquery = {uid:"NI6FuroAFmaFYci4BXoPft7mcvL2"};
-  var newvalues = {$set:{ "paramerters.name" : "Mandar"}};
+  var newvalues = {$set:{ "paramerters.name" : "username"}};
   var dbase  = db.db("mydb");
   dbase.collection("customers_uid").updateOne(myquery, newvalues, function(err, res) {
     if (err) throw err;

@@ -4,11 +4,11 @@ var url = "mongodb://127.0.0.1:27017/mydb";
 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
-  //db.createCollection("customers", function(err, res) {
+  db.createCollection("customers", function(err, res) {
     console.log("Table created!");
     db.close();
 });
-/*
+
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var myobj = { name: "Company Inc", address: "Highway 37" };
@@ -36,4 +36,4 @@ MongoClient.connect(url, function(err, db) {
     console.log(result);  
     db.close();  
   });  
-});  */
+}); 

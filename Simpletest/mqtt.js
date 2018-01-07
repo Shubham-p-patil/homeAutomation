@@ -1,6 +1,6 @@
 
 exports.mqttConnect = function(mqtt){
-    var client  = mqtt.connect('mqtt://13.126.45.185')
+    var client  = mqtt.connect('mqtt://192.168.0.21')//Default port is 1883 and enter the correct ip of the broker
     client.on('connect', function () {
         console.log("Connected to remote broker successfully")
         })
@@ -23,6 +23,7 @@ exports.payload = function(client){
     client.on('message', function (topic, message) {
       // message is Buffer
       console.log(topic.toString()+':'+message.toString())
+//Depending on the message arrived the following function can pubish or perform certion functions or operation
 
       if(topic.toString() == '/light/intensity')
       {

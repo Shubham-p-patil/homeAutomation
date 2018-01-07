@@ -10,11 +10,11 @@ var tempmqtt = require('mqtt')
 var mqtt = require('./mqtt.js');
 var admin = require("firebase-admin");
 // Fetch the service account key JSON file contents
-var serviceAccount = require("./HackerthonData-c3fbad41c806.json");
+var serviceAccount = require("./firebase.json");
 // Initialize the app with a service account, granting admin privileges
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://hackerthondata.firebaseio.com/"
+  databaseURL: "https://**********.firebaseio.com/"
 });
 // As an admin, the app has access to read and write all data, regardless of Security Rules
 var db = admin.database();
