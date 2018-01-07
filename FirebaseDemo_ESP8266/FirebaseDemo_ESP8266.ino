@@ -3,8 +3,8 @@
 // Set these to run example.
 #define FIREBASE_HOST "hackerthondata.firebaseio.com"
 #define FIREBASE_AUTH "UhSHqqCgupzUyRDj3JMo6BZTBhCpBpoRPFwAkvJ3"
-#define WIFI_SSID "D-Link"
-#define WIFI_PASSWORD "bhagyashreepp"
+#define WIFI_SSID "chinmay"
+#define WIFI_PASSWORD "chinmaykhopde"
 
 void setup() {
   Serial.begin(9600);
@@ -30,17 +30,16 @@ void setup() {
 
 void loop() {
 // set value
-Firebase.setInt("Ledstatus",1);
-
-Serial.println(Firebase.getString("responseRequired"));
- // handle error
- if (Firebase.failed()) {
-     Serial.print("pushing /logs failed:");
+int incomingByte = Serial.read();
+if(incomingByte){
+  Firebase.setBool("KMbzqgQMfsXLhrxotK8lLhrYnLK2/lock",1);
+  // handle error
+  if (Firebase.failed()) {
+     Serial.print("pushing Successfull");
      Serial.println(Firebase.error());
      return;
  }
- Serial.print("pushed: /logs/");
- //Serial.println(name);
- Firebase.setInt("Ledstatus",0);
+ else
+ Firebase.setBool("KMbzqgQMfsXLhrxotK8lLhrYnLK2/lock",1);
  delay(1000);
 }

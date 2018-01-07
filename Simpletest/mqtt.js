@@ -28,7 +28,7 @@ exports.payload = function(client){
       {
           console.log('New value :'+ message.toString());
       }
-      if(topic.toString() == '/light/1')
+      if(topic.toString() == '/lights')
       {
           if(message.toString()=='on'){
               mqtt_pub(client,'{"topic":"/light/intensity","message":"100"}');
